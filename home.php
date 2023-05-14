@@ -11,10 +11,10 @@
 		<input type="text" id="fullName" name="fullName">
 
 		<label for="total">Total:</label>
-		<input type="number" id="total" name="total">
+		<input type="float" id="total" name="total">
 
 		<label for="bodyWeight">Body Weight:</label>
-		<input type="number" id="bodyWeight" name="bodyWeight">
+		<input type="float" id="bodyWeight" name="bodyWeight">
 
 		<label for="gender">Gender:</label>
 		<select id="gender" name="gender">
@@ -28,10 +28,24 @@
 			<option value="kgs">Kilograms</option>
 		</select>
 
-
-		<button type="submit" id="submit-button">Submit</button>
-	
+		<input type="submit" id="submit-button"></button>
 	</form>
-	<script src="script.js"></script>
+<br>
+
+	<?php
+	
+	$total = $_GET["total"];
+	$gender = $_GET["gender"];
+	$type =  $_GET["kilos"];
+	$bodyWeight = $_GET["bodyWeight"];
+	include "dots.php";
+	$dots = new Dots($bodyWeight, $total, $type, $gender);
+	
+	$computedDots = $dots ->getDots();
+	
+	?>
+
+	DOTS: <?php echo "$computedDots"?>
+	
 </body>
 </html>
