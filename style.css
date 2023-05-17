@@ -47,3 +47,25 @@ input[type="submit"] {
   input[type="submit"]:hover {
 	background-color: #45a049;
   }
+  header {
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+  }
+  
+  h1 {
+	margin: 0;
+  }
+  
+  button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+  }
+  
+  button:hover {
+	background-color: #45a049;
+  }

@@ -4,17 +4,24 @@
 	<title>Name Collection Site</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
+	
+	<header>
+    	<button onclick="window.location.href='home.html'">Old Scores</button>
+  	</header>
+
 	<h1>Dots Calculator</h1>
+<br>
 	<form id="name-collection-form" action = "home.php" method = "get">
 		<label for="fullName">Full Name:</label>
-		<input type="text" id="fullName" name="fullName">
+		<input type="text" id="fullName" name="fullName" placeholder = "John Smith">
 
 		<label for="total">Total:</label>
-		<input type="float" id="total" name="total">
+		<input type="float" id="total" name="total" placeholder = "0">
 
 		<label for="bodyWeight">Body Weight:</label>
-		<input type="float" id="bodyWeight" name="bodyWeight">
+		<input type="float" id="bodyWeight" name="bodyWeight" placeholder = "0">
 
 		<label for="gender">Gender:</label>
 		<select id="gender" name="gender">
@@ -38,14 +45,17 @@
 	$gender = $_GET["gender"];
 	$type =  $_GET["kilos"];
 	$bodyWeight = $_GET["bodyWeight"];
-	include "dots.php";
+	if ($total == '' || $bodyWeight == ''){
+		echo 'Enter correct total and bodyweight';
+	}
+	else{
+	include_once "dots.php";
 	$dots = new Dots($bodyWeight, $total, $type, $gender);
 	
 	$computedDots = $dots ->getDots();
 	
-	?>
 
-	DOTS: <?php echo "$computedDots"?>
+	echo "DOTS: $computedDots";}?>
 	
 </body>
 </html>

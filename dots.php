@@ -3,11 +3,11 @@
         private $maleCoeff = array(-307.75076,24.0900756,-0.1918759221,0.0007391293,-0.000001093);
         private $femaleCoeff = array(-57.96288, 13.6175032, -0.1126655495, 0.0005158568, -0.0000010706);
         private $coeff;
-        private $dots;
-        private $bodyWeight;
-        private $total;
-        private $isKG;
-        private $gender;
+        private $dots = 0;
+        private $bodyWeight =0;
+        private $total =0;
+        private $isKG = true;
+        private $gender = "male";
 
         private $denom;
         
