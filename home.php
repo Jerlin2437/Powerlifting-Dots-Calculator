@@ -40,7 +40,7 @@
 <br>
 
 	<?php
-	
+	$name = $_GET["fullName"];
 	$total = $_GET["total"];
 	$gender = $_GET["gender"];
 	$type =  $_GET["kilos"];
@@ -55,7 +55,15 @@
 	$computedDots = $dots ->getDots();
 	
 
-	echo "DOTS: $computedDots";}?>
+	echo "DOTS: $computedDots";}
+	include_once "sqlconnect.php";
+	$sqlConnectVar = new Sqlconnect();
+	$sqlConnectVar ->createDB();
+	$sqlConnectVar->createTable();
+	$sqlConnectVar ->insertTable($name, $total, $bodyWeight, $gender, $computedDots);
+
+	?>
+	
 	
 </body>
 </html>
