@@ -60,7 +60,7 @@
 	$sqlConnectVar = new Sqlconnect();
 	$sqlConnectVar ->createDB();
 	$sqlConnectVar->createTable();
-	$sqlConnectVar ->insertTable($name, $total, $bodyWeight, $gender, $computedDots);
+	$sqlConnectVar ->insertTable($name, $total, $bodyWeight, $gender, $computedDots, $type);
 
 	?>
 	

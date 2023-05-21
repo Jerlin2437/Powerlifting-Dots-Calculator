@@ -5,7 +5,8 @@ class Sqlconnect {
 private  $servername = "localhost";
 private  $username = "root";
 private  $password = "password";
-private $conn; 
+private $conn;
+private $type;
   
 function __construct(){
 // Create connection
@@ -19,27 +20,10 @@ function __construct(){
   
 }
 
-function insertTable($name, $total, $bodyWeight, $gender, $dots){
-  $sql = "INSERT INTO listOfDots (fullName, total, bodyWeight, gender, dots)
-  VALUES ('$name', '$total', '$bodyWeight', '$gender', '$dots')";
-  if ($this->conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $this->conn->error;
-  }
-}
 
 function createDB(){
   $sql= "CREATE DATABASE IF NOT EXISTS myDB";
-  
-
-  
-  if ($this -> conn->query($sql) === TRUE) {
-    echo "Database created successfully";
-  } else {
-    echo "Error creating database: " . $this ->conn->error;
-  }
-
+  $this -> conn->query($sql);
   $this ->conn = new mysqli($this ->servername, $this -> username, $this ->password, "myDB");
 }
   
@@ -48,18 +32,21 @@ function createTable(){
     fullName varchar(50),
     total float,
     bodyWeight float,
-    gender boolean,
-    dots float
+    gender varchar(10),
+    dots float,
+    kgs varchar(4)
     )";
-  
-    if ($this ->conn->query($sql) === TRUE) {
-      echo "Table MyGuests created successfully";
-    } else {
-      echo "Error creating table: " . $this ->conn->error;
-    }
+    $this -> conn->query($sql);
+ 
 }
+function insertTable($name, $total, $bodyWeight, $gender, $dots, $type){
+  $sql = "INSERT INTO listOfDots (fullName, total, bodyWeight, gender, dots, kgs)
+  VALUES ('$name', '$total', '$bodyWeight', '$gender', '$dots', '$type')";
+  $this->conn->query($sql);
 
 }
+}
+
 
 ?>
 
