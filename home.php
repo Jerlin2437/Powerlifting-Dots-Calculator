@@ -8,7 +8,7 @@
 <body>
 	
 	<header>
-    	<button onclick="window.location.href='home.html'">Old Scores</button>
+    	<button onclick="window.location.href='tableDisplay.php'">Old Scores</button>
   	</header>
 
 	<h1>Dots Calculator</h1>

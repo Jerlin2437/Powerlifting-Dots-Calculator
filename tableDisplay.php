@@ -1,84 +1,79 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Information Table</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    
-    th, td {
-      padding: 8px;
-      text-align: left;
-    }
-    
-    th {
-      background-color: #f2f2f2;
-    }
-    button {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 20px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
-  }
-  
-  button:hover {
-	background-color: #45a049;
-  }
-  header {
-    text-align: center;
-  }
-  h1 {
-    text-align: center;
-  }
-  </style>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <button onclick="window.location.href='home.php'">Back to Calculator</button>
-    </header>
-    
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "password";
 
-  <h1>Information Table</h1>
-  
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Number 1</th>
-        <th>Number 2</th>
-        <th>Number 3</th>
-        <th>Date of Entry</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Insert rows of data here -->
-      <tr>
-        <td>John Doe</td>
-        <td>10</td>
-        <td>20</td>
-        <td>30</td>
-        <td>2023-05-14</td>
-      </tr>
-      <tr>
-        <td>Jane Smith</td>
-        <td>15</td>
-        <td>25</td>
-        <td>35</td>
-        <td>2023-05-15</td>
-      </tr>
-    </tbody>
-  </table>
+// Create connection
+$conn = new mysqli($servername, $username, $password, "myDB");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql= "CREATE Table if not exists listOfDots (
+  fullName varchar(50),
+  total float,
+  bodyWeight float,
+  gender varchar(10),
+  dots float,
+  kgs varchar(4)
+  )";
+  $conn->query($sql);
+
+$sql = "SELECT * FROM listOfDots";
+
+// Execute the query
+$result = $conn->query($sql);
+
+// Check if any rows are returned
+if ($result->num_rows > 0) {
+  echo "<table>";
+  echo "<tr>";
+  echo "<th>Name</th>";
+  echo "<th>Total</th>";
+  echo "<th>Bodyweight</th>";
+  echo "<th>Gender</th>";
+  echo "<th>Dots</th>";
+  echo "<th>Type</th>";
+  echo "</tr>";
+
+  // Output data of each row
+  while ($row = $result->fetch_assoc()) {
+      echo "<tr>";
+      echo "<td>" . $row["fullName"] . "</td>";
+      echo "<td>" . $row["total"] . "</td>";
+      echo "<td>" . $row["bodyWeight"] . "</td>";
+      echo "<td>" . $row["gender"] . "</td>";
+      echo "<td>" . $row["dots"] . "</td>";
+      echo "<td>" . $row["kgs"] . "</td>";
+      echo "</tr>";
+  }
+  echo "</table>";
+} else {
+  echo "No results found.";
+}
+?>
 </body>
 </html>
