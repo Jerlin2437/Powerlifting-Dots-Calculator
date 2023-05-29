@@ -6,7 +6,7 @@ private  $servername = "localhost";
 private  $username = "root";
 private  $password = "password";
 private $conn;
-private $type;
+private $dbName;
   
 function __construct(){
 // Create connection
