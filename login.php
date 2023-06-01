@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login Page</title>
     <style>
@@ -7,6 +8,7 @@
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
         }
+
         .login-container {
             width: 300px;
             margin: 0 auto;
@@ -17,9 +19,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
         }
+
         .login-container h2 {
             text-align: center;
         }
+
         .login-form input[type="text"],
         .login-form input[type="password"] {
             width: 100%;
@@ -29,6 +33,7 @@
             border-radius: 3px;
             box-sizing: border-box;
         }
+
         .login-form input[type="submit"] {
             background-color: #4CAF50;
             color: #fff;
@@ -38,18 +43,22 @@
             cursor: pointer;
             width: 100%;
         }
+
         .login-form input[type="submit"]:hover {
             background-color: #45a049;
         }
+
         .signup-link {
             text-align: center;
         }
+
         .signup-link a {
             color: #4CAF50;
             text-decoration: none;
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Login</h2>
@@ -64,15 +73,20 @@
     </div>
     <?php
     error_reporting(E_ERROR | E_PARSE);
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        include_once "sqllogin.php";
-        $signupVar = new sqlLogin();
-        $signupVar->createDB();
-        $signupVar ->createTable();
-        if ($username != "" and $password != ""){
-            $signupVar->login($username, $password);
-        }
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    include_once "sqllogin.php";
+    $signupVar = new sqlLogin();
+    $signupVar->createDB();
+    $signupVar->createTable();
+
+    session_start();
+    $_SESSION['username'] = $username;
+
+    if ($username != "" and $password != "") {
+        $signupVar->login($username, $password);
+    }
     ?>
 </body>
+
 </html>
