@@ -18,10 +18,36 @@
         th {
             background-color: #f2f2f2;
         }
+
+        .back-button {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .green-button {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
     </style>
 </head>
 
 <body>
+    <a href="login.php" class="green-button">Go Back to Login</a>
+    <br>
+    <br>
+    <br>
+    <br>
     <?php
     $servername = "localhost";
     $username = "root";

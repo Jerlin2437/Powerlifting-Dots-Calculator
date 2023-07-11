@@ -9,7 +9,6 @@ class Dots
     private $total = 0;
     private $isKG = true;
     private $gender = "male";
-
     private $denom;
 
     function __construct($bodyWeight, $total, $isKG, $gender)
